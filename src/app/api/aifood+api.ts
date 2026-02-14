@@ -1,7 +1,7 @@
-import OpenAI from "openai";
+import Groq from "groq-sdk";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 export async function POST(req: Request, res: Response) {
@@ -51,16 +51,14 @@ Format the answer in clear markdown with headers, lists, and bold highlights.
 
 `;
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+    const response = await groq.chat.completions.create({
+      model: "meta-llama/llama-4-scout-17b-16e-instruct",
+      temperature: 0.3,
       messages: [
         {
           role: "user",
           content: [
-            {
-              type: "text",
-              text: prompt,
-            },
+            { type: "text", text: prompt },
             {
               type: "image_url",
               image_url: { url: `data:image/png;base64,${image}` },

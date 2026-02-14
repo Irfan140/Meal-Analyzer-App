@@ -1,17 +1,17 @@
+import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 import React, { useState } from "react";
 import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
   ActivityIndicator,
+  Image,
   ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import * as ImagePicker from "expo-image-picker";
-import Markdown, { MarkdownIt } from "react-native-markdown-display";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { Ionicons } from "@expo/vector-icons";
+import Markdown, { MarkdownIt } from "react-native-markdown-display";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type NutritionData = {
   Calories: number;
@@ -53,7 +53,7 @@ export default function Index() {
     }
   };
 
-  function normalizeJsonData(data: any) {
+  function normalizeJsonData(data: any): NutritionData | null {
     if (!data) return null;
 
     let vitamins: string[] = [];
@@ -67,7 +67,14 @@ export default function Index() {
     }
 
     return {
-      ...data,
+      Calories: data["Calories (kcal)"] ?? data["Calories"] ?? 0,
+      Protein: data["Protein (g)"] ?? data["Protein"] ?? 0,
+      Carbohydrates: data["Carbohydrates (g)"] ?? data["Carbohydrates"] ?? 0,
+      Fat: data["Fat (g)"] ?? data["Fat"] ?? 0,
+      Fiber: data["Fiber (g)"] ?? data["Fiber"] ?? 0,
+      "Health Score": data["Health Score"] ?? 0,
+      Explanation:
+        data["Health Score Explanation"] ?? data["Explanation"] ?? "",
       "Key vitamins & minerals": vitamins,
     };
   }

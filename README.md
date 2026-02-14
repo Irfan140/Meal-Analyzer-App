@@ -1,6 +1,6 @@
 # 🍽️ Meal Analyzer
 
-An intelligent React Native mobile application that uses AI to analyze food images and provide comprehensive nutritional information, health advice, and dietary recommendations.
+An intelligent React Native mobile application powered by **Groq's Llama 4 Scout Vision** model that analyzes food images and provides comprehensive nutritional information, health advice, and dietary recommendations — all for free using Groq's blazing-fast inference API.
 
 ## ✨ Features
 
@@ -49,7 +49,7 @@ An intelligent React Native mobile application that uses AI to analyze food imag
 - **Language**: TypeScript
 - **Navigation**: Expo Router (file-based routing)
 - **UI**: NativeWind (TailwindCSS for React Native)
-- **AI**: OpenAI GPT-4 Vision API
+- **AI**: Groq API (Llama 4 Scout Vision) via [groq-sdk](https://github.com/groq/groq-typescript)
 - **Authentication**: Clerk
 - **Animations**: React Native Reanimated
 
@@ -81,16 +81,16 @@ npm install
 
 ### 3. Set up environment variables
 
-Create a `.env` file in the root directory and add your API keys:
+Create a `.env.local` file in the root directory and add your API keys:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
 ```
 
 To get your API keys:
 
-- **OpenAI**: Sign up at [OpenAI Platform](https://platform.openai.com/)
+- **Groq**: Sign up for a free API key at [console.groq.com](https://console.groq.com/)
 - **Clerk**: Create an account at [Clerk.com](https://clerk.com/)
 
 ### 4. Start the development server
@@ -134,7 +134,7 @@ Meal_Analyzer/
 │   │   │       ├── index.tsx        # Home/Analyzer screen
 │   │   │       └── profile.tsx      # User profile screen
 │   │   └── api/
-│   │       └── aifood+api.ts        # OpenAI API integration
+│   │       └── aifood+api.ts        # Groq API integration (Llama 4 Scout Vision)
 │   └── components/
 │       └── GoogSignIn.tsx           # Google OAuth component
 ├── assets/
