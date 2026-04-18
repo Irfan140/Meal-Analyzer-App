@@ -100,7 +100,7 @@ const Profile = () => {
 
           {/* App Version */}
           <View className="mt-8 items-center">
-            <Text className="text-gray-400 text-sm">AI travel App v1.0.0</Text>
+            <Text className="text-gray-400 text-sm">App version 1.0.0</Text>
           </View>
         </View>
       </ScrollView>
